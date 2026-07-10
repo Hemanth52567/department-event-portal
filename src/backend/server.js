@@ -22,10 +22,11 @@ const transporter = nodemailer.createTransport({
 });
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'Hemanth@2006',
-  database: 'department_event_booking' 
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
+  port: 24743
 });
 
 db.connect((err) => {
