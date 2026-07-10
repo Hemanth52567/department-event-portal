@@ -245,11 +245,11 @@ export default function App() {
 
   const fetchData = async () => {
     try {
-      const eventRes = await fetch('http://localhost:5000/api/event');
+      const eventRes = await fetch('https://department-event-portal.onrender.com/api/event');
       const eventData = await eventRes.json();
       setEventInfo(eventData);
 
-      const bookingsRes = await fetch('http://localhost:5000/api/bookings');
+      const bookingsRes = await fetch('https://department-event-portal.onrender.com/api/bookings');
       const bookingsData = await bookingsRes.json();
       setDatabaseBookings(bookingsData);
     } catch (error) {
@@ -263,7 +263,7 @@ export default function App() {
 
   const handleBooking = async (bookingData) => {
     try {
-      const response = await fetch('http://localhost:5000/api/bookings', {
+      const response = await fetch('https://department-event-portal.onrender.com/api/bookings', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(bookingData)
@@ -304,7 +304,7 @@ export default function App() {
   const handleDelete = async (b) => {
     if (window.confirm(`Are you sure you want to delete the booking for ${b.name}?`)) {
       try {
-        const response = await fetch(`http://localhost:5000/api/bookings/${b.id}`, {
+        const response = await fetch(`https://department-event-portal.onrender.com/api/bookings/${b.id}`, {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ tickets: b.tickets, eventId: eventInfo.id })

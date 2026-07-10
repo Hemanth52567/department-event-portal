@@ -8,7 +8,11 @@ const { GoogleGenerativeAI } = require('@google/generative-ai'); // Added AI pac
 const app = express();
 const port = 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://department-event-portal.vercel.app', // Replace with your actual Vercel URL
+  methods: ['GET', 'POST', 'DELETE'],
+  credentials: true
+}));
 app.use(express.json());
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
